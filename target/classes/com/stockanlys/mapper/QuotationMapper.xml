@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stockanlys.dao.QuotationMapper">
+
+  <resultMap id="BaseResultMap" type="com.stockanlys.entity.Quotation">
+    <result column="index" jdbcType="BIGINT" property="index" />
+    <result column="changepercent" jdbcType="DOUBLE" property="changepercent" />
+    <result column="trade" jdbcType="DOUBLE" property="trade" />
+    <result column="open" jdbcType="DOUBLE" property="open" />
+    <result column="high" jdbcType="DOUBLE" property="high" />
+    <result column="low" jdbcType="DOUBLE" property="low" />
+    <result column="settlement" jdbcType="DOUBLE" property="settlement" />
+    <result column="volume" jdbcType="BIGINT" property="volume" />
+    <result column="turnoverratio" jdbcType="DOUBLE" property="turnoverratio" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="per" jdbcType="DOUBLE" property="per" />
+    <result column="pb" jdbcType="DOUBLE" property="pb" />
+    <result column="mktcap" jdbcType="DOUBLE" property="mktcap" />
+    <result column="nmc" jdbcType="DOUBLE" property="nmc" />
+  </resultMap>
+
+  <sql id="Blob_Column_List">
+    code, name
+  </sql>
+
+  <select id="selectAllByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    *
+    from ${quotationDate};
+  </select>
+  
+  <select id="selectIndexdecByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    *
+    from ${quotationDate}
+    where changepercent > 0;
+  </select>
+  
+  <select id="selectIndexadvByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    *
+    from ${quotationDate}
+    where changepercent > 0;
+  </select>
+  
+  <select id="selectIndexsuspByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    *
+    from ${quotationDate}
+    where volume = 0;
+  </select>
+  
+</mapper>

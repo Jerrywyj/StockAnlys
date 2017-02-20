@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd ">
+
+	<!-- 数据源 : DriverManagerDataSource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://192.168.1.24:32771/test" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+	</bean>
+
+	<!--
+		mybatis的SqlSession的工厂: SqlSessionFactoryBean 
+		dataSource:这个工厂所引用的数据源信息，就是数据库的地址、账户、名称、驱动
+		configLocation:这个工厂所使用的配置文件，内容主要是表所映射的实体类、dao层接口Sql映射的配置文件地址
+		MyBatis引用数据源配置
+	-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:test-mybatis-config.xml" /> 
+	</bean>
+
+	<!--
+		mybatis自动扫描加载Sql映射文件/接口 : MapperScannerConfigurer sqlSessionFactory
+		basePackage:指定sql映射文件/接口所在的包（自动扫描）
+	-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.stockanlys.dao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<!--
+		事务管理器 : DataSourceTransactionManager dataSource:引用上面定义的数据源
+	-->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 
+		使用声明式事务
+		 transaction-manager：引用上面定义的事务管理器
+	 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+<!-- 	总结：dataSource(数据源) + (entity类 + xxMapper(sql映射))(mybatis-config配置文件) -> sqlSessionFactory(sql对话)
+		dataSource(数据源) -> DataSourceTransactionManager(事务)
+		我们都知道，事务可能有多个sqlSession，在这里我们显然可以用多个id定义多个dataSource，然后生成多个sqlSession
+		回头看看DataSourceTransactionManager的文档，看如何在一个事务管理器中定义多个sqlSession -->
+</beans>

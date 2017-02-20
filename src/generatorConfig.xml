@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 用于根据数据库表格自动生成数据库操作映射类、sql映射xml配置文件、entity类 -->
+<generatorConfiguration>
+  <classPathEntry    location="/Users/jerry/m2e/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:32771/test" driverClass="com.mysql.jdbc.Driver" password="123456" userId="root" />
+    <javaModelGenerator targetPackage="com.stockanlys.entity" targetProject="StockAnlys" />
+    <sqlMapGenerator targetPackage="com.stockanlys.mapper" targetProject="StockAnlys" />
+    <javaClientGenerator targetPackage="com.stockanlys.dao" targetProject="StockAnlys" type="XMLMAPPER" />
+    <table schema="test" tableName="quotation20170217"
+			enableCountByExample="false"
+			enableUpdateByExample="false"  
+            enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false" 
+            enableDeleteByPrimaryKey="false" 
+            enableUpdateByPrimaryKey="false" 
+            enableSelectByPrimaryKey="true"
+            enableInsert="false">
+    </table>
+  </context>
+</generatorConfiguration>
