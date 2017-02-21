@@ -33,7 +33,13 @@ import com.stockanlys.service.UserService;
 		"classpath:test-spring-common.xml",
 		"classpath:test-spring-servlet.xml"
 		})
-public class TestUserInfoMapper
+//@ContextConfiguration(locations=
+//	{
+//		"file:WebContent/WEB-INF/spring-config/mybatis-mappers-config.xml",
+//		"file:WebContent/WEB-INF/spring-config/spring-mybatis-config.xml",
+//		"file:WebContent/WEB-INF/spring-config/spring-servlet.xml"
+//	})
+public class TestMapperAndService
 {
 	@Autowired
 	UserInfoMapper userInfoMapper;
