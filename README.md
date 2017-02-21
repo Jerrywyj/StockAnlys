@@ -16,6 +16,6 @@
 
 
 
-[index-image]: https://github.com/Jerrywyj/StockAnlys/doc
+[index-image]: https://github.com/Jerrywyj/StockAnlys/blob/master/doc/pic-index.png
 
 
