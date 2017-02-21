@@ -11,9 +11,9 @@ public interface QuotationMapper {
 	
 	List<Quotation> selectAllByDate(@Param("quotationDate") String quotationDate);
 	/*查询下跌家数 query Indexdec*/
-	List<Quotation> selectIndexdecByDate(String quotationDate);
+	List<Quotation> selectIndexdecByDate(@Param("quotationDate") String quotationDate);
 	/*查询上涨家数 query Indexadv*/
-	List<Quotation> selectIndexadvByDate(String quotationDate);
+	List<Quotation> selectIndexadvByDate(@Param("quotationDate") String quotationDate);
 	/*查询停牌家数 query Indexsusp*/
-	List<Quotation> selectIndexsuspByDate(String quotationDate);
+	List<Quotation> selectIndexsuspByDate(@Param("quotationDate") String quotationDate);
 }

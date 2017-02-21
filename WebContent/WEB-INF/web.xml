@@ -28,7 +28,7 @@
 		<!-- 自定义过滤器的自定义属性 -->
 		<init-param>
 			<param-name>noFilterPaths</param-name>
-			<param-value>index.html;login;css/;js/;test2.html;dashboard.html</param-value>
+			<param-value>index.html;login;css/;js/;test2.html</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

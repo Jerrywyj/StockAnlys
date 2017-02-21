@@ -20,4 +20,10 @@
     where userName = #{userName, jdbcType=VARCHAR}
   </select>
   
+  <update id="updateTokenByUserName">
+  	update user_info
+  	set token = #{token}
+  	where userName = #{userName}
+  </update>
+  
 </mapper>

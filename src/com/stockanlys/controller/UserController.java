@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.stockanlys.entity.UserInfo;
 import com.stockanlys.service.UserService;
+import com.stockanlys.tools.GetRandomString;
 
 @Controller
 @RequestMapping("/user")
@@ -38,8 +39,6 @@ public class UserController
 		{
 			HttpSession session = request.getSession();
 			session.setAttribute("username", userName);
-			//TODO
-			//用userService生成token并存到session里
 			map.put("json", 200);
 			return map;
 		}

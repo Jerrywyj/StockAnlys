@@ -30,26 +30,28 @@ public class AuthenticationFilter implements Filter
 		HttpServletResponse response = (HttpServletResponse)arg1;
 		String noFilterPaths = config.getInitParameter("noFilterPaths");
 		HttpSession session = request.getSession();
-		arg2.doFilter(arg0, arg1);
 
-//		if (noFilterPaths != null)
-//		{
-//			String[] strArray = noFilterPaths.split(";");
-//			for (String str : strArray)
-//			{
-//				System.out.println("白名单有："+str);
-//			}
-//			for (String str : strArray)
-//			{
-//				if (str == null || "".equals(str))continue;
-//				if (request.getRequestURI().indexOf(str) != -1 )
-//				{
-//					System.out.println("noFilterPaths");
-//					arg2.doFilter(arg0, arg1);
-//					return;
-//				}
-//			}
-//		}
+		if (noFilterPaths != null)
+		{
+			String[] strArray = noFilterPaths.split(";");
+
+			for (String str : strArray)
+			{
+				if (str == null || "".equals(str))continue;
+				if (request.getRequestURI().indexOf(str) != -1 )
+				{
+					System.out.println("noFilterPaths");
+					arg2.doFilter(arg0, arg1);
+					return;
+				}
+			}
+		}
+		
+		if(session.getAttribute("username")!=null){
+			arg2.doFilter(arg0, arg1);
+		}else{
+			response.sendRedirect(request.getContextPath() + "/index.html");
+		}
 	}
 
 	@Override

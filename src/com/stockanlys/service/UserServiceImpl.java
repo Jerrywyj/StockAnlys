@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stockanlys.dao.UserInfoMapper;
 import com.stockanlys.entity.UserInfo;
+import com.stockanlys.tools.GetRandomString;
 
 @Service()
 @Transactional  //此处不再进行创建SqlSession和提交事务，都交由spring去管理。
