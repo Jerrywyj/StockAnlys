@@ -14,6 +14,8 @@
 
 3.用quartz模块实现对python数据获取模块的定时调用。
 
+4.编写Mock，测试Controller。
+
 ####登录页面
 ![index][index-image]
 
