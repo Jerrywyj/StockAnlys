@@ -4,7 +4,7 @@
 
 前端：Bootstrap + jQuery
 
-之前用过C#的StrangeIOC，一种Unity3D游戏开发的IOC框架，但没用过spring。近期想转方向做Web开发，于是2017年1月初我便开始接触Servlet、Spring等技术，2月中琢磨开始做这个股票数据分析Demo，算是对之前一个多月来学习Java Web开发技术的总结。股票数据是用python的Tushare库获取的。
+之前用过C#的StrangeIOC，一种Unity3D游戏开发的IOC框架，但没用过spring。近期想转方向做Web开发，于是2017年1月初我便开始接触Servlet、Spring等技术，2月中琢磨开始做这个股票数据分析Demo，算是对之前一个多月来学习Java Web开发技术的总结，目前还在开发中。
 
 ####TODO list：
 
